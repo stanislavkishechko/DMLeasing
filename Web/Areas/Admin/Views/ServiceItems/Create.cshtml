@@ -1,0 +1,61 @@
+﻿@model ServiceItem
+@{
+    string strTitle = "Create service";
+    ViewBag.Title = strTitle;
+}
+
+<div class="container">
+    <h2 class="page-title">@strTitle</h2>
+    <div>
+        <form asp-area="Admin" asp-controller="ServiceItems" asp-action="Create" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="TitleImagePath" />
+
+            <div asp-validation-summary="All"></div>
+            <div>
+                <input class="form-input" placeholder="Title" asp-for="Title" />
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div>
+                <input class="form-input" placeholder="Subtitle" asp-for="Subtitle" />
+                <span asp-validation-for="Subtitle"></span>
+            </div>
+            <div>
+                <textarea asp-for="Description" class="form__textarea" placeholder="Description"></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div>
+                <input class="form-input" placeholder="Type" asp-for="Type" />
+                <span asp-validation-for="Type"></span>
+            </div>
+            <div>
+                <input class="form-input" placeholder="State" asp-for="State" />
+                <span asp-validation-for="State"></span>
+            </div>
+            <div>
+                <input class="form-input" placeholder="Price" asp-for="Price" />
+                <span asp-validation-for="Price"></span>
+            </div>
+            <div>
+                <input type="file" name="titleImageFile" id="titleImageFile" />
+                <div>
+                    <img class="" src="~/images/@Model.TitleImagePath" />
+                </div>
+            </div>
+            <div>
+                <input class="form-input" placeholder="MetaTitle" asp-for="MetaTitle" />
+                <span asp-validation-for="MetaTitle"></span>
+            </div>
+            <div>
+                <input class="form-input" placeholder="MetaDescription" asp-for="MetaDescription" />
+                <span asp-validation-for="MetaDescription"></span>
+            </div>
+            <div>
+                <input class="form-input" placeholder="MetaKeywords" asp-for="MetaKeywords" />
+                <span asp-validation-for="MetaKeywords"></span>
+            </div>
+            <div class="save__btn">
+                <input class="form__btn" type="submit" value="Save" />
+            </div>
+        </form>
+    </div>

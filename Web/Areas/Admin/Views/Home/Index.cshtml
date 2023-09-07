@@ -1,0 +1,122 @@
+﻿@model ViewModel
+@{
+    string strTitle = "Admin Panel";
+    ViewBag.Title = strTitle;
+}
+
+<div class="container">
+    <h1 class="page-title">@strTitle</h1>
+    <h2 class="block__title">Services</h2>
+    <section class="services">
+        <table>
+            <caption class="table-caption">New cars</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            @foreach (ServiceItem entity in Model.ServiceItems)
+            {
+                if (entity.State == "New")
+                {
+                    <tr>
+                        <td>
+                            <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
+                                @($"{entity.Title}")
+                            </a>
+                        </td>
+                        <td>
+                            <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="@entity.Id">edit</a>
+                        </td>
+                        <td>
+                            <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="ServiceItems" asp-action="Delete" method="post">
+                                <input type="hidden" name="id" value="@entity.Id">
+                                <a onclick="document.getElementById('form-@entity.Id').submit();">delete</a>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+        <table>
+            <caption class="table-caption">Pre-owned cars</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            @foreach (ServiceItem entity in Model.ServiceItems)
+            {
+                if (entity.State == "Used")
+                {
+                    <tr>
+                        <td>
+                            <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
+                                @($"{entity.Title}")
+                            </a>
+                        </td>
+                        <td>
+                            <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="@entity.Id">edit</a>
+                        </td>
+                        <td>
+                            <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="ServiceItems" asp-action="Delete" method="post">
+                                <input type="hidden" name="id" value="@entity.Id">
+                                <a onclick="document.getElementById('form-@entity.Id').submit();">delete</a>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+        <a class="add" asp-area="Admin" asp-controller="ServiceItems" asp-action="Create" asp-route-id="">Add service</a>
+    </section>
+    <section class="blog-edit">
+        <h2 class="block__title">Blog</h2>
+        <table class="table">
+            <caption class="table-caption">Blog Item</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            @foreach (BlogItem entity in Model.BlogItems)
+            {
+                <tr>
+                    <td>
+                        <a asp-area="" asp-controller="BlogItems" asp-action="Index" asp-route-id="@entity.Id">
+                            @($"{entity.Title}")
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-area="Admin" asp-controller="BlogItems" asp-action="Edit" asp-route-id="@entity.Id">edit</a>
+                    </td>
+                    <td>
+                        <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="BlogItems" asp-action="Delete" method="post">
+                            <input type="hidden" name="id" value="@entity.Id">
+                            <a onclick="document.getElementById('form-@entity.Id').submit();">delete</a>
+                        </form> 
+                    </td>
+                </tr>
+            }
+        </table>
+        <a class="add" asp-area="Admin" asp-controller="BlogItems" asp-action="Edit" asp-route-id="">Add blog item</a>
+    </section>
+    <section class="pages">
+        <h2 class="block__title">Edit site pages</h2>
+        <a class="edit-page__site" asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageIndex">Home</a>
+        <a class="edit-page__site" asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageServices">Services</a>
+        <a class="edit-page__site" asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageContacts">Contacts</a>
+        <a class="edit-page__site" asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageBlog">Blog</a>
+        <div class="exit_btn">
+            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+                <input class="form__btn" type="submit" value="Exit" />
+            </form>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ServiceItem>
+@{
+    TextField textField = ViewBag.TextField;
+
+    ViewBag.Title = textField.MetaTitle;
+    ViewBag.Description = textField.MetaDescription;
+    ViewBag.Keywords = textField.MetaKeywords;
+}
+
+<section class="choose">
+    @if (Model.Any())
+    {
+        <div class="container">
+            <h2 class="section-title">
+                Choose your car
+            </h2>
+            <div class="tabs">
+                <div class="tabs__btn">
+                    <button class="tabs__btn-item tabs__btn-item--active" data-button="content-1">Car and Minivan</button>
+                    <button class="tabs__btn-item" data-button="content-2">Trucks</button>
+                    <button class="tabs__btn-item" data-button="content-3">Crossovers & SUVs</button>
+                    <button class="tabs__btn-item" data-button="content-4">Electrified</button>
+                </div>
+                <div class="tabs__content">
+                    <div asp-area="" asp-controller="Services" asp-action="Index" asp-route-type="" class="tabs__content-item tabs__content-item--active" id="content-1">
+                        @foreach (ServiceItem entity in Model)
+                        {
+                            <div class="card">
+                                <img class="card__img" src="~/images/@entity.TitleImagePath" alt="">
+                                <div class="card__content">
+                                    <h4 class="card__title">@entity.Title</h4>
+                                    <p class="card__text">@entity.Subtitle</p>
+                                    <p class="card__price">@entity.Price</p>
+                                </div>
+                                <a class="card__link" asp-area="" asp-controller="Services" asp-action="NewCars" asp-route-id="@entity.Id">see details</a>
+                            </div>
+                        }
+                    </div>
+                    <div class="tabs__content-item" id="content-2">
+                        @foreach (var truck in Model)
+                        {
+                            if (truck.Type == "Trucks")
+                            {
+                                <div class="card">
+                                    <img class="card__img" src="~/images/@truck.TitleImagePath" alt="">
+                                    <div class="card__content">
+                                        <h4 class="card__title">@truck.Title</h4>
+                                        <p class="card__text">@truck.Subtitle</p>
+                                        <p class="card__price">@truck.Price</p>
+                                    </div>
+                                    <a class="card__link" asp-area="" asp-controller="Services" asp-action="NewCars" asp-route-id="@truck.Id">see details</a>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="tabs__content-item" id="content-3">
+                        @foreach (var cross in Model)
+                        {
+                            if (cross.Type == "CrossoversAndSUVs")
+                            {
+                                <div class="card">
+                                    <img class="card__img" src="~/images/@cross.TitleImagePath" alt="">
+                                    <div class="card__content">
+                                        <h4 class="card__title">@cross.Title</h4>
+                                        <p class="card__text">@cross.Subtitle</p>
+                                        <p class="card__price">@cross.Price</p>
+                                    </div>
+                                    <a class="card__link" asp-area="" asp-controller="Services" asp-action="NewCars" asp-route-id="@cross.Id">see details</a>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="tabs__content-item" id="content-4">
+                        @foreach (var el in Model)
+                        {
+                            if (el.Type == "Electrified")
+                            {
+                                <div class="card">
+                                    <img class="card__img" src="~/images/@el.TitleImagePath" alt="">
+                                    <div class="card__content">
+                                        <h4 class="card__title">@el.Title</h4>
+                                        <p class="card__text">@el.Subtitle</p>
+                                        <p class="card__price">@el.Price</p>
+                                    </div>
+                                    <a class="card__link" asp-area="" asp-controller="Services" asp-action="NewCars" asp-route-id="@el.Id">see details</a>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <a class="showmore-link" asp-area="" asp-controller="Services" asp-action="NewCars" asp-route-id="">SHOW MORE</a>
+        </div>
+    }
+</section>
+@await Html.PartialAsync("BlogPartial")

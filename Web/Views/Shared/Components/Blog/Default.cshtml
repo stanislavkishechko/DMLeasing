@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BlogItem>
+
+@if (Model?.Any() == true)
+{
+    <section class="blog">
+        <div class="container">
+            <div class="blog__items">
+                @{
+                    var list = Model.ToList();
+                    if(list.Count >= 2)
+                    {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            <div class="blog__item">
+                                <img class="blog__item-img" src="~/images/@Html.DisplayFor(modelItem => list[i].TitleImagePath)" alt="">
+                                <h4 class="blog__item-title">@Html.DisplayFor(modelItem => list[i].Title)</h4>
+                                <a asp-area="" asp-controller="Blog" asp-action="Index" asp-route-id="@Html.DisplayFor(modelItem => list[i].Id)" class="blog__item-link">more</a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="blog__item">
+                            <img class="blog__item-img" src="~/images/@Html.DisplayFor(modelItem => list[0].TitleImagePath)" alt="">
+                            <h4 class="blog__item-title">@Html.DisplayFor(modelItem => list[0].Title)</h4>
+                            <a asp-area="" asp-controller="Blog" asp-action="Index" asp-route-id="@Html.DisplayFor(modelItem => list[0].Id)" class="blog__item-link">more</a>
+                        </div>
+                    }
+
+                }
+            </div>
+            <a class="showmore-link" asp-area="" asp-controller="Blog" asp-action="Index">SHOW MORE</a>
+        </div>
+    </section>
+}

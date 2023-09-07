@@ -1,0 +1,16 @@
+﻿@model BlogItem
+@{
+    ViewBag.Title = Model.MetaTitle;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.MetaKeywords;
+}
+
+<div class="container">
+    <div class="blog-show__item">
+        <h2 class="blog-show__title">@Model.Title</h2>
+        @* <div>
+            <img class="blog-show__img" src="~/images/@Model.TitleImagePath" />
+        </div> *@
+        <p class="blog-show__description">@Model.Description</p>
+    </div>   
+</div>

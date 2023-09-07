@@ -1,0 +1,36 @@
+﻿@model TextField
+@{
+    string strTitle = "Edit post";
+    ViewBag.Title = strTitle;
+}
+
+<div class="container">
+    <h2 class="page-title">@strTitle</h2>
+    <div>
+        <form asp-area="Admin" asp-controller="TextFields" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="CodeWord" />
+
+            <div asp-validation-summary="All"></div>
+            <div>
+                <input class="form-input" placeholder="Title" asp-for="Title" />
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div>
+                <input class="form-input" placeholder="MetaTitle" asp-for="MetaTitle" />
+                <span asp-validation-for="MetaTitle"></span>
+            </div>
+            <div>
+                <input class="form-input" placeholder="MetaDescription" asp-for="MetaDescription" />
+                <span asp-validation-for="MetaDescription"></span>
+            </div>
+            <div>
+                <input class="form-input" placeholder="MetaKeywords" asp-for="MetaKeywords" />
+                <span asp-validation-for="MetaKeywords"></span>
+            </div>
+            <div class="save__btn">
+                <input class="form__btn" type="submit" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>

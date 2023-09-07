@@ -1,0 +1,44 @@
+﻿@model BlogItem
+@{
+    string strTitle = "Edit blog";
+    ViewBag.Title = strTitle;
+}
+
+<div class="container">
+    <h2 class="page-title">@strTitle</h2>
+    <form asp-area="Admin" asp-controller="BlogItems" asp-action="Edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="TitleImagePath" />
+
+        <div asp-validation-summary="All"></div>
+        <div>
+            <input class="form-input" placeholder="Title" asp-for="Title" />
+            <span asp-validation-for="Title"></span>
+        </div>
+        <div>
+            <textarea class="form__textarea" placeholder="Description" asp-for="Description"></textarea>
+            <span asp-validation-for="Description"></span>
+        </div>
+        <div>
+            <input type="file" name="titleImageFile" id="titleImageFile" />
+            <div>
+                <img class="" src="~/images/@Model.TitleImagePath" />
+            </div>
+        </div>
+        <div>
+            <input class="form-input" placeholder="MetaTitle" asp-for="MetaTitle" />
+            <span asp-validation-for="MetaTitle"></span>
+        </div>
+        <div>
+            <input class="form-input" placeholder="MetaDescription" asp-for="MetaDescription" />
+            <span asp-validation-for="MetaDescription"></span>
+        </div>
+        <div>
+            <input class="form-input" placeholder="MetaKeywords" asp-for="MetaKeywords" />
+            <span asp-validation-for="MetaKeywords"></span>
+        </div>
+        <div class="save__btn">
+            <input class="form__btn" type="submit" value="Save" />
+        </div>
+    </form>
+</div>

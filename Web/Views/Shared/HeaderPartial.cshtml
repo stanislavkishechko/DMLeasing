@@ -1,0 +1,28 @@
+﻿﻿<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">
+                <img class="logo__img" src="~/images/logo.svg" alt="" />
+            </a>
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__list-item">
+                        <a class="menu__list-link" asp-area="" asp-controller="Services" asp-action="NewCars" asp-route-id="">NEW CARS</a>
+                    </li>
+                    <li class="menu__list-item">
+                        <a class="menu__list-link" asp-area="" asp-controller="Services" asp-action="UsedCars" asp-route-id="">PRE-OWNED CARS</a>
+                    </li>
+                    <li class="menu__list-item">
+                        <a class="menu__list-link" asp-area="" asp-controller="Home" asp-action="Finance" asp-route-id="">FINANCE</a>
+                    </li>
+                    <li class="menu__list-item">
+                        <a class="menu__list-link" asp-area="" asp-controller="Home" asp-action="LeaseVSBuy" asp-route-id="">LEASE VS BUY</a>
+                    </li>
+                    <li class="menu__list-item">
+                        <a class="menu__list-link" asp-area="" asp-controller="Contact" asp-action="Index">CONTACT US</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

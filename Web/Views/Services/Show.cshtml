@@ -1,0 +1,20 @@
+﻿@model ServiceItem
+@{
+    ViewBag.Title = Model.MetaTitle;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.MetaKeywords;
+}
+
+<div class="container">
+    <div class="service">
+        <div class="service__info">
+            <h2 class="service__title">@Model.Title</h2>
+            <h3 class="service__subtitle">@Model.Subtitle</h3>
+            <h4 class="service__price">@Model.Price</h4>
+        </div>
+        <div>
+            <img class="service__img" src="~/images/@Model.TitleImagePath" />
+        </div>
+    </div>
+    <p class="service--description">@Model.Description</p>
+</div>

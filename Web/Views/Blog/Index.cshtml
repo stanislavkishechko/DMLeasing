@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BlogItem>
+@{
+    TextField textField = ViewBag.TextField;
+
+    ViewBag.Title = textField.MetaTitle;
+    ViewBag.Description = textField.MetaDescription;
+    ViewBag.Keywords = textField.MetaKeywords;
+}
+
+<section class="blog-page">
+    <div class="container">
+        <div class="blog__items">
+            @foreach (BlogItem entity in Model)
+            {
+                <div class="blog__item">
+                    <img class="blog__item-img" src="~/images/@entity.TitleImagePath" alt="">
+                    <h4 class="blog__item-title">@entity.Title</h4>
+                    <a asp-area="" asp-controller="Blog" asp-action="Index" asp-route-id="@entity.Id" class="blog__item-link">more</a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

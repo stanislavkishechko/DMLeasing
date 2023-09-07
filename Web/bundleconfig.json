@@ -1,0 +1,9 @@
+[
+  {
+    "outputFileName": "wwwroot\\js\\scripts.js",
+    "inputFiles": [
+      "wwwroot\\js\\swiper-bundle.min.js",
+      "wwwroot\\js\\main.js"
+    ]
+  }
+]

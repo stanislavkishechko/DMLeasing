@@ -1,0 +1,22 @@
+﻿@model TextField
+@{
+    ViewBag.Title = Model.MetaTitle;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.KeyWords = Model.MetaKeywords;
+}
+
+<section class="contacts">
+    <div class="container">
+        <h2 class="section-title contacts__title">Contact Us</h2>
+        <p class="contacts__text">
+            Feel free to contact us with questions, potencial partnerships or media inquiries
+        </p>
+        <form class="form">
+            <input type="text" name="name" class="form-input" placeholder="Name">
+            <input type="text" name="email" class="form-input" placeholder="E-mail">
+            <textarea name="text" class="form__textarea" placeholder="Your text"></textarea>
+            <button class="form__btn" type="submit" asp-controller="Contact" asp-action="Send">SUBMIT</button>
+        </form>
+    </div>
+</section>
+@await Html.PartialAsync("BlogPartial")
